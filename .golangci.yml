@@ -1,0 +1,14 @@
+run:
+  deadline: 5m
+  issues-exit-code: 0
+  skip-dirs:
+    - proto/
+
+linters:
+  enable:
+    - gocyclo
+    - godox
+    - gofmt
+    - makezero
+    - misspell
+    - unconvert

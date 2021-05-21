@@ -1,0 +1,36 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+prefix = "github.com/zbiljic/aura"
+
+# gazelle:prefix github.com/zbiljic/aura
+gazelle(name = "gazelle")
+
+# gazelle:go_naming_convention_external go_default_library
+
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+
+# bazel run //:buildifier
+buildifier(
+    name = "buildifier",
+)
+
+load("@com_github_ash2k_bazel_tools//golangcilint:def.bzl", "golangcilint")
+load("@com_github_ash2k_bazel_tools//goimports:def.bzl", "goimports")
+
+# bazel run //:golangcilint
+golangcilint(
+    name = "golangcilint",
+    config = "//:.golangci.yml",
+    paths = [
+        "./...",
+    ],
+    prefix = prefix,
+)
+
+# bazel run //:goimports
+goimports(
+    name = "goimports",
+    display_diffs = True,
+    prefix = prefix,
+    write = False,
+)
