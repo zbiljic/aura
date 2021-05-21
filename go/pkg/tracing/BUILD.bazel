@@ -1,0 +1,43 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "tracing",
+    srcs = [
+        "config.go",
+        "middleware.go",
+        "tracer.go",
+    ],
+    importpath = "github.com/zbiljic/aura/go/pkg/tracing",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_opentracing_contrib_go_stdlib//nethttp:go_default_library",
+        "@com_github_opentracing_opentracing_go//:go_default_library",
+        "@com_github_openzipkin_contrib_zipkin_go_opentracing//:go_default_library",
+        "@com_github_openzipkin_zipkin_go//:go_default_library",
+        "@com_github_openzipkin_zipkin_go//reporter/http:go_default_library",
+        "@com_github_pkg_errors//:go_default_library",
+        "@com_github_uber_jaeger_client_go//:go_default_library",
+        "@com_github_uber_jaeger_client_go//config:go_default_library",
+        "@com_github_uber_jaeger_client_go//log/zap:go_default_library",
+        "@com_github_uber_jaeger_client_go//zipkin:go_default_library",
+        "@com_github_uber_jaeger_lib//metrics/prometheus:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "tracing_test",
+    srcs = [
+        "middleware_test.go",
+        "tracer_test.go",
+    ],
+    deps = [
+        ":tracing",
+        "@com_github_opentracing_opentracing_go//:go_default_library",
+        "@com_github_opentracing_opentracing_go//ext:go_default_library",
+        "@com_github_opentracing_opentracing_go//mocktracer:go_default_library",
+        "@com_github_stretchr_testify//assert:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
+    ],
+)
