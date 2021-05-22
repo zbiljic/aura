@@ -14,10 +14,6 @@ const (
 	TextFormat = "text"
 )
 
-const (
-	RFC3339Z = "2006-01-02T15:04:05.000Z" // time.RFC3339 with Zulu time zone
-)
-
 // Config stores the config for the logger.
 type Config struct {
 	Level  string `json:"level" envconfig:"LOG_LEVEL" default:"info"`
@@ -32,11 +28,11 @@ func toZapLevel(level string) (zapcore.Level, error) {
 
 func getEncoder(logFormat string) zapcore.Encoder {
 	encoderConfig := zap.NewProductionEncoderConfig()
-	// ISO8601-formatted string in UTC/Zulu timezone
-	encoderConfig.EncodeTime = zapcore.TimeEncoder(func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-		enc.AppendString(t.UTC().Format(RFC3339Z))
-	})
 	encoderConfig.TimeKey = "time" // This will change the key from 'ts' to 'time'
+	// RFC3339-formatted string for time
+	encoderConfig.EncodeTime = zapcore.TimeEncoder(func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
+		enc.AppendString(t.Format(time.RFC3339))
+	})
 
 	if JSONFormat == logFormat {
 		return zapcore.NewJSONEncoder(encoderConfig)
