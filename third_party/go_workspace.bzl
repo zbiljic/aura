@@ -546,6 +546,13 @@ def go_dependencies():
         version = "v1.1.0",
     )
     go_repository(
+        name = "com_github_heptiolabs_healthcheck",
+        importpath = "github.com/heptiolabs/healthcheck",
+        sum = "h1:GT4RsKmHh1uZyhmTkWJTDALRjSHYQp6FRKrotf0zhAs=",
+        version = "v0.0.0-20180807145615-6ff867650f40",
+    )
+
+    go_repository(
         name = "com_github_hpcloud_tail",
         importpath = "github.com/hpcloud/tail",
         sum = "h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=",
@@ -1153,6 +1160,12 @@ def go_dependencies():
         sum = "h1:Ev7yu1/f6+d+b3pi5vPdRPc6nNtP1umSfcWiEfRqv6I=",
         version = "v1.0.25",
     )
+    go_repository(
+        name = "in_gopkg_data_dog_go_sqlmock_v1",
+        importpath = "gopkg.in/DATA-DOG/go-sqlmock.v1",
+        sum = "h1:FVCohIoYO7IJoDDVpV2pdq7SgrMH6wHnuTyrdrxJNoY=",
+        version = "v1.3.0",
+    )
 
     go_repository(
         name = "in_gopkg_errgo_v2",
@@ -1377,6 +1390,25 @@ def go_dependencies():
         sum = "h1:Ezj3JGmsOnG1MoRWQkPBsKLe9DwWD9QeXzTRzzldNVk=",
         version = "v1.6.0",
     )
+    go_repository(
+        name = "org_uber_go_dig",
+        importpath = "go.uber.org/dig",
+        sum = "h1:yLmDDj9/zuDjv3gz8GQGviXMs9TfysIUMUilCpgzUJY=",
+        version = "v1.10.0",
+    )
+    go_repository(
+        name = "org_uber_go_fx",
+        importpath = "go.uber.org/fx",
+        sum = "h1:CFNTr1oin5OJ0VCZ8EycL3wzF29Jz2g0xe55RFsf2a4=",
+        version = "v1.13.1",
+    )
+    go_repository(
+        name = "org_uber_go_goleak",
+        importpath = "go.uber.org/goleak",
+        sum = "h1:G3eWbSNIskeRqtsN/1uI5B+eP73y3JUuBsv9AZjehb4=",
+        version = "v0.10.0",
+    )
+
     go_repository(
         name = "org_uber_go_multierr",
         importpath = "go.uber.org/multierr",
