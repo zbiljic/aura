@@ -2,7 +2,7 @@ package tracing
 
 type Config struct {
 	// Specifies the service name to use on the tracer.
-	ServiceName string `json:"service_name"`
+	ServiceName string `json:"service_name" split_words:"true"`
 
 	// Set this to the tracing backend you wish to use.
 	// If omitted or empty, tracing will be disabled.

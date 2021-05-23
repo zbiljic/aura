@@ -17,7 +17,10 @@ go_library(
     deps = [
         "//go/pkg/logger",
         "//go/pkg/tracing",
+        "@com_github_go_playground_validator_v10//:go_default_library",
         "@com_github_heptiolabs_healthcheck//:go_default_library",
+        "@com_github_joho_godotenv//:go_default_library",
+        "@com_github_kelseyhightower_envconfig//:go_default_library",
         "@com_github_opentracing_opentracing_go//:go_default_library",
         "@com_github_prometheus_client_golang//prometheus:go_default_library",
         "@com_github_prometheus_client_golang//prometheus/promhttp:go_default_library",
