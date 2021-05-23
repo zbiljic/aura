@@ -5,6 +5,9 @@ go 1.16
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
 	github.com/go-playground/validator/v10 v10.6.1
+	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
+	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.4.0
 	github.com/heptiolabs/healthcheck v0.0.0-20180807145615-6ff867650f40
 	github.com/joho/godotenv v1.3.0
 	github.com/kelseyhightower/envconfig v1.4.0
@@ -19,5 +22,6 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible
 	go.uber.org/fx v1.13.1
 	go.uber.org/zap v1.16.0
+	google.golang.org/grpc v1.38.0
 	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0 // indirect
 )
