@@ -1,0 +1,31 @@
+diff --git BUILD BUILD
+index bfcd639..1038cb7 100644
+--- BUILD
++++ BUILD
+@@ -1,7 +1,7 @@
+ load("@bazel_gazelle//:def.bzl", "gazelle")
+ load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+ load("@io_bazel_rules_go//proto:compiler.bzl", "go_proto_compiler")
+-load("@io_bazel_rules_go//proto/wkt:well_known_types.bzl", "PROTO_RUNTIME_DEPS", "WELL_KNOWN_TYPES_APIV2")
++load("@io_bazel_rules_go//proto/wkt:well_known_types.bzl", "PROTO_RUNTIME_DEPS", "WELL_KNOWN_TYPES_APIV2", "WELL_KNOWN_TYPE_RULES")
+ 
+ buildifier(
+     name = "buildifier",
+@@ -35,7 +35,7 @@ go_proto_compiler(
+     plugin = "@org_golang_google_protobuf//cmd/protoc-gen-go",
+     suffix = ".pb.go",
+     visibility = ["//visibility:public"],
+-    deps = PROTO_RUNTIME_DEPS + WELL_KNOWN_TYPES_APIV2,
++    deps = PROTO_RUNTIME_DEPS + WELL_KNOWN_TYPE_RULES.values() + WELL_KNOWN_TYPES_APIV2,
+ )
+ 
+ go_proto_compiler(
+@@ -47,7 +47,7 @@ go_proto_compiler(
+     plugin = "@org_golang_google_grpc_cmd_protoc_gen_go_grpc//:protoc-gen-go-grpc",
+     suffix = "_grpc.pb.go",
+     visibility = ["//visibility:public"],
+-    deps = PROTO_RUNTIME_DEPS + [
++    deps = PROTO_RUNTIME_DEPS + WELL_KNOWN_TYPE_RULES.values() + WELL_KNOWN_TYPES_APIV2 + [
+         "@org_golang_google_grpc//:go_default_library",
+         "@org_golang_google_grpc//codes:go_default_library",
+         "@org_golang_google_grpc//status:go_default_library",

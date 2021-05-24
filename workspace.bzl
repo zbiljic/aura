@@ -1,12 +1,14 @@
 """Workspace initialization. Consult the WORKSPACE on how to use it."""
 
 # Import third party repository rules.
+load("//third_party/grpc_ecosystem_grpc_gateway:workspace.bzl", grpc_ecosystem_grpc_gateway = "repo")
 
 # Import external repository rules.
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def _initialize_third_party():
     """ Load third party repositories.  See above load() statements. """
+    grpc_ecosystem_grpc_gateway()
     pass
 
 # Define all external repositories.
