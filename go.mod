@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
 	github.com/go-playground/validator/v10 v10.6.1
+	github.com/golang/protobuf v1.5.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.4.0
@@ -17,11 +18,14 @@ require (
 	github.com/openzipkin/zipkin-go v0.2.5
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.10.0
+	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
 	github.com/stretchr/testify v1.7.0
 	github.com/uber/jaeger-client-go v2.29.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible
 	go.uber.org/fx v1.13.1
 	go.uber.org/zap v1.16.0
+	google.golang.org/genproto v0.0.0-20210521181308-5ccab8a35a9a
 	google.golang.org/grpc v1.38.0
+	google.golang.org/protobuf v1.26.0
 	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0 // indirect
 )

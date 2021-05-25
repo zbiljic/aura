@@ -1,0 +1,7 @@
+# gazelle:exclude **/*.go
+
+# gazelle:go_proto_compilers @com_github_grpc_ecosystem_grpc_gateway_v2//:go_apiv2
+# gazelle:go_grpc_compilers @com_github_grpc_ecosystem_grpc_gateway_v2//:go_apiv2, @com_github_grpc_ecosystem_grpc_gateway_v2//:go_grpc, @com_github_grpc_ecosystem_grpc_gateway_v2//protoc-gen-grpc-gateway:go_gen_grpc_gateway
+
+# gazelle:resolve proto proto protoc-gen-openapiv2/options/annotations.proto @com_github_grpc_ecosystem_grpc_gateway_v2//protoc-gen-openapiv2/options:options_proto
+# gazelle:resolve proto go protoc-gen-openapiv2/options/annotations.proto @com_github_grpc_ecosystem_grpc_gateway_v2//protoc-gen-openapiv2/options:go_default_library

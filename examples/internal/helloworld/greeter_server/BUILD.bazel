@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "greeter_server_lib",
+    srcs = [
+        "config.go",
+        "configfx.go",
+        "fx.go",
+        "main.go",
+        "server.go",
+        "serverfx.go",
+    ],
+    importpath = "github.com/zbiljic/aura/examples/internal/helloworld/greeter_server",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//examples/internal/proto/helloworld",
+        "//go/pkg/aurafx",
+        "//go/pkg/cmd",
+        "//go/pkg/grpc/fx",
+        "//go/pkg/logger",
+        "@com_github_grpc_ecosystem_grpc_gateway_v2//runtime:go_default_library",
+        "@com_github_sean_seed//:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_uber_go_fx//:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "greeter_server",
+    embed = [":greeter_server_lib"],
+    visibility = ["//visibility:public"],
+)
