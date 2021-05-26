@@ -1,0 +1,13 @@
+diff --git golink.bzl golink.bzl
+index 79786d2..4020586 100644
+--- golink.bzl
++++ golink.bzl
+@@ -3,7 +3,7 @@ load("@bazel_skylib//lib:shell.bzl", "shell")
+ def gen_copy_files_script(ctx, files):
+     content = ""
+     for f in files:
+-        line = "cp -f %s %s/;\n" % (f.path, ctx.attr.dir)
++        line = "cp -fv %s %s/;\n" % (f.path, ctx.attr.dir)
+         content += line
+     substitutions = {
+         "@@CONTENT@@": shell.quote(content),

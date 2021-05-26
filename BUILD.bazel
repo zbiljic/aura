@@ -1,9 +1,19 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@bazel_gazelle//:def.bzl", "DEFAULT_LANGUAGES", "gazelle_binary")
 
 prefix = "github.com/zbiljic/aura"
 
+gazelle_binary(
+    name = "gazelle_binary",
+    languages = DEFAULT_LANGUAGES + ["@golink//gazelle/go_link:go_default_library"],
+    visibility = ["//visibility:public"],
+)
+
 # gazelle:prefix github.com/zbiljic/aura
-gazelle(name = "gazelle")
+gazelle(
+    name = "gazelle",
+    gazelle = "//:gazelle_binary",
+)
 
 # gazelle:go_naming_convention_external go_default_library
 
