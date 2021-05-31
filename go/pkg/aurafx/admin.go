@@ -1,10 +1,15 @@
 package aurafx
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"html"
+	"io"
 	"net"
 	"net/http"
+	"net/url"
+	"sort"
 	"strings"
 
 	"go.uber.org/fx"
@@ -58,6 +63,9 @@ func NewAdmin(p AdminParams) error {
 		}
 	}
 
+	// index responds with an HTML page listing the available admin handlers
+	adminMux.HandleFunc("/", adminIndexHandler(p.Log, p.AdminHandlers))
+
 	server := &http.Server{
 		Addr:    hostPort,
 		Handler: adminMux,
@@ -84,4 +92,64 @@ func NewAdmin(p AdminParams) error {
 	})
 
 	return nil
+}
+
+type adminEntry struct {
+	Name string
+	Href string
+}
+
+func adminIndexHandler(
+	log *zap.SugaredLogger,
+	adminHandlers []map[string]http.Handler,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
+		var entries []adminEntry
+		for _, handlers := range adminHandlers {
+			for k := range handlers {
+				entries = append(entries, adminEntry{
+					Name: k,
+					Href: k,
+				})
+			}
+		}
+
+		sort.Slice(entries, func(i, j int) bool {
+			return entries[i].Name < entries[j].Name
+		})
+
+		if err := adminIndexTmplExecute(w, entries); err != nil {
+			log.Error(err)
+		}
+	}
+}
+
+func adminIndexTmplExecute(w io.Writer, entries []adminEntry) error {
+	var b bytes.Buffer
+	b.WriteString(`<html>
+<head>
+<title>admin</title>
+</head>
+<body>
+admin
+<br/>
+<p>
+<ul>
+`)
+
+	for _, entry := range entries {
+		link := &url.URL{Path: entry.Href}
+		fmt.Fprintf(&b, "<li><a href='%s'>%s</a></li>\n", link, html.EscapeString(entry.Name))
+	}
+
+	b.WriteString(`</ul>
+</p>
+</body>
+</html>`)
+
+	_, err := w.Write(b.Bytes())
+	return err
 }
