@@ -31,7 +31,7 @@ func getEncoder(logFormat string) zapcore.Encoder {
 	encoderConfig.TimeKey = "time" // This will change the key from 'ts' to 'time'
 	// RFC3339-formatted string for time
 	encoderConfig.EncodeTime = zapcore.TimeEncoder(func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-		enc.AppendString(t.Format(time.RFC3339))
+		enc.AppendString(t.Format(time.RFC3339Nano))
 	})
 
 	if JSONFormat == logFormat {
