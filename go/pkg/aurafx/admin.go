@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"net/url"
 	"sort"
-	"strings"
 
 	"go.uber.org/fx"
 	"go.uber.org/zap"
@@ -48,10 +47,6 @@ func NewAdmin(p AdminParams) error {
 	}
 
 	hostPort := addr.String()
-	parts := strings.Split(hostPort, ":")
-	if len(parts) == 2 && parts[0] == "" {
-		hostPort = fmt.Sprintf("localhost:%s", parts[1])
-	}
 
 	adminMux := http.NewServeMux()
 
