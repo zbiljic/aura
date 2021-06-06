@@ -25,6 +25,12 @@ type GatewayConfig struct {
 	IdleTimeout  time.Duration `json:"idle_timeout" default:"120s" split_words:"true"`
 }
 
+type GatewayInputResult struct {
+	fx.Out
+
+	ServeMuxOptions []runtime.ServeMuxOption `group:"grpc_gateway_serve_mux_options,flatten"`
+}
+
 type GatewayParams struct {
 	fx.In
 
@@ -36,7 +42,8 @@ type GatewayParams struct {
 	GRPCConfig    *GRPCConfig
 	GatewayConfig *GatewayConfig
 
-	Services []RegisterFn `group:"service"`
+	Services        []RegisterFn             `group:"service"`
+	ServeMuxOptions []runtime.ServeMuxOption `group:"grpc_gateway_serve_mux_options"`
 }
 
 func NewGateway(p GatewayParams) error {
@@ -58,9 +65,12 @@ func NewGateway(p GatewayParams) error {
 		return fmt.Errorf("could not dial gRPC server: %w", err)
 	}
 
-	gatewayMux := runtime.NewServeMux(
+	serveMuxOptions := []runtime.ServeMuxOption{
 		runtime.WithMetadata(grpc_middleware.TracingMetadataAnnotator),
-	)
+	}
+	serveMuxOptions = append(serveMuxOptions, p.ServeMuxOptions...)
+
+	gatewayMux := runtime.NewServeMux(serveMuxOptions...)
 
 	// register handlers
 	if len(p.Services) > 0 {
