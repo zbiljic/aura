@@ -28,7 +28,8 @@ type GatewayConfig struct {
 type GatewayInputResult struct {
 	fx.Out
 
-	ServeMuxOptions []runtime.ServeMuxOption `group:"grpc_gateway_serve_mux_options,flatten"`
+	ServeMuxOptions []runtime.ServeMuxOption            `group:"grpc_gateway_serve_mux_options,flatten"`
+	Handlers        []func(h http.Handler) http.Handler `group:"grpc_gateway_handlers,flatten"`
 }
 
 type GatewayParams struct {
@@ -42,8 +43,9 @@ type GatewayParams struct {
 	GRPCConfig    *GRPCConfig
 	GatewayConfig *GatewayConfig
 
-	Services        []RegisterFn             `group:"service"`
-	ServeMuxOptions []runtime.ServeMuxOption `group:"grpc_gateway_serve_mux_options"`
+	Services        []RegisterFn                        `group:"service"`
+	ServeMuxOptions []runtime.ServeMuxOption            `group:"grpc_gateway_serve_mux_options"`
+	Handlers        []func(h http.Handler) http.Handler `group:"grpc_gateway_handlers"`
 }
 
 func NewGateway(p GatewayParams) error {
@@ -90,9 +92,19 @@ func NewGateway(p GatewayParams) error {
 	mux := http.NewServeMux()
 	mux.Handle("/", gatewayMux)
 
+	var handler http.Handler
+	handler = mux
+
+	// chain http handlers
+	for i := len(p.Handlers) - 1; i >= 0; i-- {
+		handler = p.Handlers[i](handler)
+	}
+
+	handler = tracing.NewTracedHttpHandler(p.Tracer, handler)
+
 	server := &http.Server{
 		Addr:         hostPort,
-		Handler:      tracing.NewTracedHttpHandler(p.Tracer, mux),
+		Handler:      handler,
 		ReadTimeout:  p.GatewayConfig.ReadTimeout,
 		WriteTimeout: p.GatewayConfig.WriteTimeout,
 		IdleTimeout:  p.GatewayConfig.IdleTimeout,
