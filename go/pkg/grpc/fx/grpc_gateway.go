@@ -28,8 +28,7 @@ type GatewayConfig struct {
 type GatewayInputResult struct {
 	fx.Out
 
-	ServeMuxOptions []runtime.ServeMuxOption            `group:"grpc_gateway_serve_mux_options,flatten"`
-	Handlers        []func(h http.Handler) http.Handler `group:"grpc_gateway_handlers,flatten"`
+	ServeMuxOptions []runtime.ServeMuxOption `group:"grpc_gateway_serve_mux_options,flatten"`
 }
 
 type GatewayParams struct {
@@ -43,9 +42,9 @@ type GatewayParams struct {
 	GRPCConfig    *GRPCConfig
 	GatewayConfig *GatewayConfig
 
-	Services        []RegisterFn                        `group:"service"`
-	ServeMuxOptions []runtime.ServeMuxOption            `group:"grpc_gateway_serve_mux_options"`
-	Handlers        []func(h http.Handler) http.Handler `group:"grpc_gateway_handlers"`
+	Services        []RegisterFn                      `group:"service"`
+	ServeMuxOptions []runtime.ServeMuxOption          `group:"grpc_gateway_serve_mux_options"`
+	HTTPMiddleware  []func(http.Handler) http.Handler `group:"http_middleware"`
 }
 
 func NewGateway(p GatewayParams) error {
@@ -95,9 +94,9 @@ func NewGateway(p GatewayParams) error {
 	var handler http.Handler
 	handler = mux
 
-	// chain http handlers
-	for i := len(p.Handlers) - 1; i >= 0; i-- {
-		handler = p.Handlers[i](handler)
+	// chain handlers (aka "HTTP middleware")
+	for i := len(p.HTTPMiddleware) - 1; i >= 0; i-- {
+		handler = p.HTTPMiddleware[i](handler)
 	}
 
 	handler = tracing.NewTracedHttpHandler(p.Tracer, handler)
