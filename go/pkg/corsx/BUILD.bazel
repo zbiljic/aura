@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "corsx",
+    srcs = [
+        "config.go",
+        "fx.go",
+    ],
+    importpath = "github.com/zbiljic/aura/go/pkg/corsx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/pkg/httpx",
+        "@com_github_rs_cors//:go_default_library",
+    ],
+)

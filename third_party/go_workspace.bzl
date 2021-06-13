@@ -345,6 +345,18 @@ def go_dependencies():
         version = "v1.0.0",
     )
     go_repository(
+        name = "com_github_gin_contrib_sse",
+        importpath = "github.com/gin-contrib/sse",
+        sum = "h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=",
+        version = "v0.1.0",
+    )
+    go_repository(
+        name = "com_github_gin_gonic_gin",
+        importpath = "github.com/gin-gonic/gin",
+        sum = "h1:fi+bqFAx/oLK54somfCtEZs9HeH1LHVoEPUgARpTqyc=",
+        version = "v1.5.0",
+    )
+    go_repository(
         name = "com_github_go_gl_glfw",
         importpath = "github.com/go-gl/glfw",
         sum = "h1:QbL/5oDUmRBzO9/Z7Seo6zf912W/a6Sr4Eu0G/3Jho0=",
@@ -893,8 +905,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_mattn_go_isatty",
         importpath = "github.com/mattn/go-isatty",
-        sum = "h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs=",
-        version = "v0.0.4",
+        sum = "h1:d5US/mDsogSGW37IV293h//ZFaeajb69h+EHFsv2xGg=",
+        version = "v0.0.9",
     )
     go_repository(
         name = "com_github_mattn_go_runewidth",
@@ -1203,6 +1215,12 @@ def go_dependencies():
         version = "v1.3.0",
     )
     go_repository(
+        name = "com_github_rs_cors",
+        importpath = "github.com/rs/cors",
+        sum = "h1:w8OBpRMhGmSdidOtvQAEjt49YiL+XpEIasf15Fb96jQ=",
+        version = "v1.7.1-0.20210607194420-64821dda5aed",
+    )
+    go_repository(
         name = "com_github_russross_blackfriday_v2",
         importpath = "github.com/russross/blackfriday/v2",
         sum = "h1:lPqVAte+HuHNfhJ/0LC98ESWRz8afy9tM/0RK8m9o+Q=",
@@ -1371,6 +1389,18 @@ def go_dependencies():
         version = "v2.4.1+incompatible",
     )
     go_repository(
+        name = "com_github_ugorji_go",
+        importpath = "github.com/ugorji/go",
+        sum = "h1:/68gy2h+1mWMrwZFeD1kQialdSzAb432dtpeJ42ovdo=",
+        version = "v1.1.7",
+    )
+    go_repository(
+        name = "com_github_ugorji_go_codec",
+        importpath = "github.com/ugorji/go/codec",
+        sum = "h1:2SvQaVZ1ouYrrKKwoSk2pzd4A9evlKJb9oTL+OaLUSs=",
+        version = "v1.1.7",
+    )
+    go_repository(
         name = "com_github_urfave_cli",
         importpath = "github.com/urfave/cli",
         sum = "h1:+mkCCcOFKPnCmVYVcURKps1Xe+3zP90gSYGNfRkjoIY=",
@@ -1483,6 +1513,18 @@ def go_dependencies():
         importpath = "gopkg.in/gcfg.v1",
         sum = "h1:m8OOJ4ccYHnx2f4gQwpno8nAX5OGOh7RLaaz0pj3Ogs=",
         version = "v1.2.3",
+    )
+    go_repository(
+        name = "in_gopkg_go_playground_assert_v1",
+        importpath = "gopkg.in/go-playground/assert.v1",
+        sum = "h1:xoYuJVE7KT85PYWrN730RguIQO0ePzVRfFMXadIrXTM=",
+        version = "v1.2.1",
+    )
+    go_repository(
+        name = "in_gopkg_go_playground_validator_v9",
+        importpath = "gopkg.in/go-playground/validator.v9",
+        sum = "h1:SvGtYmN60a5CVKTOzMSyfzWDeZRxRuGvRQyEAKbw1xc=",
+        version = "v9.29.1",
     )
     go_repository(
         name = "in_gopkg_ini_v1",
