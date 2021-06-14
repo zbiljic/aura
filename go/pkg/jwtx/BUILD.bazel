@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "jwtx",
+    srcs = ["jwt_service.go"],
+    importpath = "github.com/zbiljic/aura/go/pkg/jwtx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_lestrrat_go_jwx//jwk:go_default_library",
+        "@com_github_lestrrat_go_jwx//jwt:go_default_library",
+    ],
+)

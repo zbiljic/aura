@@ -75,10 +75,6 @@ http_archive(
     ],
 )
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
-
-gazelle_dependencies()
-
 #
 # Go external tools
 #
@@ -132,3 +128,8 @@ load("//third_party:go_workspace.bzl", "go_dependencies")
 
 # gazelle:repository_macro third_party/go_workspace.bzl%go_dependencies
 go_dependencies()
+
+# Load Gazelle dependencies after others
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+
+gazelle_dependencies()
