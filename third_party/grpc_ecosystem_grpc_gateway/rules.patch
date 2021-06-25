@@ -1,5 +1,5 @@
 diff --git BUILD BUILD
-index bfcd639..1038cb7 100644
+index 90805c1..42cc314 100644
 --- BUILD
 +++ BUILD
 @@ -1,7 +1,7 @@
@@ -8,19 +8,19 @@ index bfcd639..1038cb7 100644
  load("@io_bazel_rules_go//proto:compiler.bzl", "go_proto_compiler")
 -load("@io_bazel_rules_go//proto/wkt:well_known_types.bzl", "PROTO_RUNTIME_DEPS", "WELL_KNOWN_TYPES_APIV2")
 +load("@io_bazel_rules_go//proto/wkt:well_known_types.bzl", "PROTO_RUNTIME_DEPS", "WELL_KNOWN_TYPES_APIV2", "WELL_KNOWN_TYPE_RULES")
- 
- buildifier(
-     name = "buildifier",
-@@ -35,7 +35,7 @@ go_proto_compiler(
+
+ exports_files(["LICENSE.txt"])
+
+@@ -38,7 +38,7 @@ go_proto_compiler(
      plugin = "@org_golang_google_protobuf//cmd/protoc-gen-go",
      suffix = ".pb.go",
      visibility = ["//visibility:public"],
 -    deps = PROTO_RUNTIME_DEPS + WELL_KNOWN_TYPES_APIV2,
 +    deps = PROTO_RUNTIME_DEPS + WELL_KNOWN_TYPE_RULES.values() + WELL_KNOWN_TYPES_APIV2,
  )
- 
+
  go_proto_compiler(
-@@ -47,7 +47,7 @@ go_proto_compiler(
+@@ -50,7 +50,7 @@ go_proto_compiler(
      plugin = "@org_golang_google_grpc_cmd_protoc_gen_go_grpc//:protoc-gen-go-grpc",
      suffix = "_grpc.pb.go",
      visibility = ["//visibility:public"],

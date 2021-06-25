@@ -28,6 +28,7 @@ require (
 	go.uber.org/zap v1.17.0
 	google.golang.org/genproto v0.0.0-20210624195500-8bfb893ecb84
 	google.golang.org/grpc v1.38.0
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0
 	google.golang.org/protobuf v1.26.0
 	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0 // indirect
 )

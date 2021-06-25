@@ -1427,8 +1427,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_google_grpc_cmd_protoc_gen_go_grpc",
         importpath = "google.golang.org/grpc/cmd/protoc-gen-go-grpc",
-        sum = "h1:lQ+dE99pFsb8osbJB3oRfE5eW4Hx6a/lZQr8Jh+eoT4=",
-        version = "v1.0.0",
+        sum = "h1:M1YKkFIboKNieVO5DLUEVzQfGwJD30Nv2jfUgzb5UcE=",
+        version = "v1.1.0",
     )
     go_repository(
         name = "org_golang_google_protobuf",

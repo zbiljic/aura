@@ -5,8 +5,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 def repo():
     """Imports grpc-gateway."""
 
-    GRPC_GATEWAY_VERSION = "2.4.0"
-    GRPC_GATEWAY_SHA256 = "0087f52975935ebb5fcfa15393fa76646571651e3f0d39125f0aa579bb49caa9"
+    GRPC_GATEWAY_VERSION = "2.5.0"
+    GRPC_GATEWAY_SHA256 = "e8334c270a479f55ad9f264e798680ac536f473d7711593f6eadab3df2d1ddc3"
 
     http_archive(
         name = "com_github_grpc_ecosystem_grpc_gateway_v2",
