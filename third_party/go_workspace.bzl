@@ -953,8 +953,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_google_genproto",
         importpath = "google.golang.org/genproto",
-        sum = "h1:R1r5J0u6Cx+RNl/6mezTw6oA14cmKC96FeUwL6A9bd4=",
-        version = "v0.0.0-20210624195500-8bfb893ecb84",
+        sum = "h1:HBPuvo39L0DgfVn9eHR3ki/RjZoUFWa+em77e7KFDfs=",
+        version = "v0.0.0-20210701191553-46259e63a0a9",
     )
     go_repository(
         name = "org_golang_google_grpc",
@@ -1055,8 +1055,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_tools",
         importpath = "golang.org/x/tools",
-        sum = "h1:L69ShwSZEyCsLKoAxDKeMvLDZkumEe8gXUZAjab0tX8=",
-        version = "v0.1.3",
+        sum = "h1:cVngSRcfgyZCzys3KYOpCFa+4dqX/Oub9tAq00ttGVs=",
+        version = "v0.1.4",
     )
     go_repository(
         name = "org_golang_x_xerrors",
