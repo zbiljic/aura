@@ -3,7 +3,7 @@ module github.com/zbiljic/aura
 go 1.16
 
 require (
-	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
+	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/go-playground/validator/v10 v10.9.0
 	github.com/golang/protobuf v1.5.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0

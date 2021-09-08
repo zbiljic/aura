@@ -407,8 +407,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_hdrhistogram_hdrhistogram_go",
         importpath = "github.com/HdrHistogram/hdrhistogram-go",
-        sum = "h1:6dpdDPTRoo78HxAJ6T1HfMiKSnqhgRRqzCuPshRkQ7I=",
-        version = "v1.1.0",
+        sum = "h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=",
+        version = "v1.1.2",
     )
     go_repository(
         name = "com_github_heptiolabs_healthcheck",
