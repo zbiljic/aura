@@ -30,9 +30,9 @@ bazel_skylib_workspace()
 #
 http_archive(
     name = "com_github_bazelbuild_buildtools",
-    sha256 = "c28eef4d30ba1a195c6837acf6c75a4034981f5b4002dda3c5aa6e48ce023cf1",
-    strip_prefix = "buildtools-4.0.1",
-    urls = ["https://github.com/bazelbuild/buildtools/archive/4.0.1.tar.gz"],
+    sha256 = "ae34c344514e08c23e90da0e2d6cb700fcd28e80c02e23e4d5715dddcb42f7b3",
+    strip_prefix = "buildtools-4.2.2",
+    urls = ["https://github.com/bazelbuild/buildtools/archive/4.2.2.tar.gz"],
 )
 
 ######################
