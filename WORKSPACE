@@ -81,9 +81,9 @@ http_archive(
 
 http_archive(
     name = "com_github_ash2k_bazel_tools",
-    sha256 = "5fb439f08ad365258008e9a2265cda0d1e8a1cebf0ab2811c50ec2c9d301e266",
-    strip_prefix = "bazel-tools-f8b27b99cae951099385655e0bb0fc9cc1c7baa4",
-    urls = ["https://github.com/ash2k/bazel-tools/archive/f8b27b99cae951099385655e0bb0fc9cc1c7baa4.zip"],
+    sha256 = "0db2a8e1cbd2155f494561a207b5ff6ecaa3e05c504c8566ead6b2d26dbb43fc",
+    strip_prefix = "bazel-tools-aefb11464b6b83590e4154a98c29171092ca290f",
+    urls = ["https://github.com/ash2k/bazel-tools/archive/aefb11464b6b83590e4154a98c29171092ca290f.zip"],
 )
 
 load("@com_github_ash2k_bazel_tools//buildozer:deps.bzl", "buildozer_dependencies")
