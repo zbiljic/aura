@@ -767,8 +767,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_uber_jaeger_client_go",
         importpath = "github.com/uber/jaeger-client-go",
-        sum = "h1:R9ec3zO3sGpzs0abd43Y+fBZRJ9uiH6lXyR/+u6brW4=",
-        version = "v2.29.1+incompatible",
+        sum = "h1:D6wyKGCecFaSRUpo8lCVbaOOb6ThwMmTEbhRwtKR97o=",
+        version = "v2.30.0+incompatible",
     )
     go_repository(
         name = "com_github_uber_jaeger_lib",
