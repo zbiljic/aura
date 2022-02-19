@@ -401,8 +401,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_heptiolabs_healthcheck",
         importpath = "github.com/heptiolabs/healthcheck",
-        sum = "h1:GT4RsKmHh1uZyhmTkWJTDALRjSHYQp6FRKrotf0zhAs=",
-        version = "v0.0.0-20180807145615-6ff867650f40",
+        sum = "h1:tsEKRC3PU9rMw18w/uAptoijhgG4EvlA5kfJPtwrMDk=",
+        version = "v0.0.0-20211123025425-613501dd5deb",
     )
     go_repository(
         name = "com_github_hpcloud_tail",
