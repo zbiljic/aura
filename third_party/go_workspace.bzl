@@ -35,8 +35,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_benbjohnson_clock",
         importpath = "github.com/benbjohnson/clock",
-        sum = "h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=",
-        version = "v1.1.0",
+        sum = "h1:ip6w0uFQkncKQ979AypyG0ER7mqUSBdKLOgAle/AT8A=",
+        version = "v1.3.0",
     )
     go_repository(
         name = "com_github_beorn7_perks",
@@ -995,8 +995,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_sys",
         importpath = "golang.org/x/sys",
-        sum = "h1:siQdpVirKtzPhKl3lZWozZraCFObP8S1v6PRp0bLrtU=",
-        version = "v0.0.0-20210806184541-e5e7981a1069",
+        sum = "h1:3Dq0eVHn0uaQJmPO+/aYPI/fRMqdrVDbu7MQcku54gg=",
+        version = "v0.0.0-20210903071746-97244b99971b",
     )
     go_repository(
         name = "org_golang_x_term",
@@ -1061,8 +1061,8 @@ def go_dependencies():
     go_repository(
         name = "org_uber_go_fx",
         importpath = "go.uber.org/fx",
-        sum = "h1:xT/BW51pc0D/Jn0Xihb6Z/XrbuSs2GNL56fUF95VneE=",
-        version = "v1.14.2",
+        sum = "h1:N8i80+X1DCX+qMRiKzM+jPPZiIiyK/bVCysga3+B+1w=",
+        version = "v1.16.0",
     )
     go_repository(
         name = "org_uber_go_goleak",
