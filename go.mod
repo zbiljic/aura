@@ -26,7 +26,7 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible
 	go.uber.org/fx v1.16.0
 	go.uber.org/zap v1.21.0
-	google.golang.org/genproto v0.0.0-20211021150943-2b146023228c
+	google.golang.org/genproto v0.0.0-20220218161850-94dd64e39d7c
 	google.golang.org/grpc v1.44.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
 	google.golang.org/protobuf v1.27.1
