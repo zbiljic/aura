@@ -731,8 +731,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_rs_cors",
         importpath = "github.com/rs/cors",
-        sum = "h1:P2KMzcFwrPoSjkF1WLRPsp3UMLyql8L4v9hQpVeK5so=",
-        version = "v1.8.0",
+        sum = "h1:KCooALfAYGs415Cwu5ABvv9n9509fSiG5SQJn/AQo4U=",
+        version = "v1.8.2",
     )
     go_repository(
         name = "com_github_sean_seed",
