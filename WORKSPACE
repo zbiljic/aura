@@ -39,7 +39,7 @@ http_archive(
 # Go support
 ######################
 
-GO_VERSION = "1.17.2"
+GO_VERSION = "1.17.7"
 
 #
 # Go Rules
