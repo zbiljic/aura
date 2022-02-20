@@ -12,6 +12,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	grpc_middleware "github.com/zbiljic/aura/go/pkg/grpc/middleware"
 	"github.com/zbiljic/aura/go/pkg/tracing"
@@ -60,7 +61,7 @@ func NewGateway(p GatewayParams) error {
 	conn, err := grpc.DialContext(
 		ctx,
 		p.GRPCConfig.Addr,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 	if err != nil {
 		return fmt.Errorf("could not dial gRPC server: %w", err)
