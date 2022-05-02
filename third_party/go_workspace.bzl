@@ -413,8 +413,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_grpc_ecosystem_grpc_gateway_v2",
         importpath = "github.com/grpc-ecosystem/grpc-gateway/v2",
-        sum = "h1:I8MsauTJQXZ8df8qJvEln0kYNc3bSapuaSsEsnFdEFU=",
-        version = "v2.7.3",
+        sum = "h1:ESEyqQqXXFIcImj/BE8oKEX37Zsuceb2cZI+EL/zNCY=",
+        version = "v2.10.0",
     )
     go_repository(
         name = "com_github_hashicorp_go_uuid",
@@ -1103,14 +1103,14 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_net",
         importpath = "golang.org/x/net",
-        sum = "h1:CIJ76btIcR3eFI5EgSo6k1qKw9KJexJuRLI9G7Hp5wE=",
-        version = "v0.0.0-20211112202133-69e39bad7dc2",
+        sum = "h1:O7DYs+zxREGLKzKoMQrtrEacpb0ZVXA5rIwylE2Xchk=",
+        version = "v0.0.0-20220127200216-cd36cc0744dd",
     )
     go_repository(
         name = "org_golang_x_oauth2",
         importpath = "golang.org/x/oauth2",
-        sum = "h1:RerP+noqYHUQ8CMRcPlC2nvTa4dcBIjegkuWdcUDuqg=",
-        version = "v0.0.0-20211104180415-d3ed0bb246c8",
+        sum = "h1:qfl7ob3DIEs3Ml9oLuPwY2N04gymzAW04WsUQHIClgM=",
+        version = "v0.0.0-20220309155454-6242fa91716a",
     )
     go_repository(
         name = "org_golang_x_sync",
@@ -1127,8 +1127,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_term",
         importpath = "golang.org/x/term",
-        sum = "h1:v+OssWQX+hTHEmOBgwxdZxK4zHq3yOs8F9J7mk0PY8E=",
-        version = "v0.0.0-20201126162022-7de9c90e9dd1",
+        sum = "h1:JGgROgKl9N8DuW20oFS5gxc+lE67/N3FcwmBPMe7ArY=",
+        version = "v0.0.0-20210927222741-03fcf44c2211",
     )
     go_repository(
         name = "org_golang_x_text",
