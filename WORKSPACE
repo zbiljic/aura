@@ -102,10 +102,10 @@ golangcilint_dependencies()
 
 http_archive(
     name = "rules_proto",
-    sha256 = "c22cfcb3f22a0ae2e684801ea8dfed070ba5bed25e73f73580564f250475e72d",
-    strip_prefix = "rules_proto-4.0.0-3.19.2",
+    sha256 = "e017528fd1c91c5a33f15493e3a398181a9e821a804eb7ff5acdd1d2d6c2b18d",
+    strip_prefix = "rules_proto-4.0.0-3.20.0",
     urls = [
-        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0-3.19.2.tar.gz",
+        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0-3.20.0.tar.gz",
     ],
 )
 
