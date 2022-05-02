@@ -245,8 +245,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_go_playground_validator_v10",
         importpath = "github.com/go-playground/validator/v10",
-        sum = "h1:I7mrTYv78z8k8VXa/qJlOlEXn/nBh+BF8dHX5nt/dr0=",
-        version = "v10.10.0",
+        sum = "h1:0W+xRM511GY47Yy3bZUbJVitCNg2BOGlCyvTqsp/xIw=",
+        version = "v10.11.0",
     )
     go_repository(
         name = "com_github_go_stack_stack",

@@ -3,7 +3,7 @@ module github.com/zbiljic/aura
 go 1.17
 
 require (
-	github.com/go-playground/validator/v10 v10.10.0
+	github.com/go-playground/validator/v10 v10.11.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.3
