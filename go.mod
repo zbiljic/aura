@@ -20,7 +20,7 @@ require (
 	github.com/prometheus/client_golang v1.12.1
 	github.com/rs/cors v1.8.2
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.1
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible
 	go.uber.org/fx v1.17.1
