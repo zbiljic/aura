@@ -6,7 +6,7 @@ go_library(
     importpath = "github.com/zbiljic/aura/go/pkg/jwtx",
     visibility = ["//visibility:public"],
     deps = [
-        "@com_github_lestrrat_go_jwx//jwk:go_default_library",
-        "@com_github_lestrrat_go_jwx//jwt:go_default_library",
+        "@com_github_lestrrat_go_jwx_v2//jwk:go_default_library",
+        "@com_github_lestrrat_go_jwx_v2//jwt:go_default_library",
     ],
 )

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lestrrat-go/jwx/jwk"
-	"github.com/lestrrat-go/jwx/jwt"
+	"github.com/lestrrat-go/jwx/v2/jwk"
+	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
 // Options is a struct for specifying configuration options for the JWT service.
