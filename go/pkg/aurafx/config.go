@@ -9,7 +9,7 @@ import (
 	"go.uber.org/fx"
 
 	"github.com/zbiljic/aura/go/pkg/logger"
-	"github.com/zbiljic/aura/go/pkg/tracing"
+	otelaura "github.com/zbiljic/aura/go/pkg/otel"
 )
 
 var configfx = fx.Provide(
@@ -20,11 +20,11 @@ var configfx = fx.Provide(
 )
 
 type Config struct {
-	AppName string          `json:"app_name" validate:"required"`
-	Logger  *logger.Config  `json:"logger" validate:"dive"`
-	Tracing *tracing.Config `json:"tracing" validate:"dive"`
-	Debug   *DebugConfig    `json:"debug" validate:"dive"`
-	Admin   *AdminConfig    `json:"admin" validate:"dive"`
+	AppName string           `json:"app_name" validate:"required"`
+	Logger  *logger.Config   `json:"logger" validate:"dive"`
+	Tracing *otelaura.Config `json:"tracing" validate:"dive"`
+	Debug   *DebugConfig     `json:"debug" validate:"dive"`
+	Admin   *AdminConfig     `json:"admin" validate:"dive"`
 }
 
 type namer interface {
@@ -39,7 +39,7 @@ func ProvideLoggerConfig(config *Config) *logger.Config {
 	return config.Logger
 }
 
-func ProvideTracingConfig(config *Config) *tracing.Config {
+func ProvideTracingConfig(config *Config) *otelaura.Config {
 	tracingConfig := config.Tracing
 	if tracingConfig.ServiceName == "" {
 		tracingConfig.ServiceName = config.AppName

@@ -8,14 +8,14 @@ import (
 	"time"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"github.com/opentracing/opentracing-go"
+	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
 	grpc_middleware "github.com/zbiljic/aura/go/pkg/grpc/middleware"
-	"github.com/zbiljic/aura/go/pkg/tracing"
+	otelaura "github.com/zbiljic/aura/go/pkg/otel"
 )
 
 type GatewayConfig struct {
@@ -38,10 +38,10 @@ type GatewayParams struct {
 	Lifecycle fx.Lifecycle
 	OnErrorCh chan error
 
-	Log           *zap.SugaredLogger
-	Tracer        opentracing.Tracer
-	GRPCConfig    *GRPCConfig
-	GatewayConfig *GatewayConfig
+	Log            *zap.SugaredLogger
+	TracerProvider trace.TracerProvider
+	GRPCConfig     *GRPCConfig
+	GatewayConfig  *GatewayConfig
 
 	Services        []RegisterFn                      `group:"service"`
 	ServeMuxOptions []runtime.ServeMuxOption          `group:"grpc_gateway_serve_mux_options"`
@@ -100,7 +100,7 @@ func NewGateway(p GatewayParams) error {
 		handler = p.HTTPMiddleware[i](handler)
 	}
 
-	handler = tracing.NewTracedHttpHandler(p.Tracer, handler)
+	handler = otelaura.NewTracedHttpHandler(handler, "HTTP-gRPC", p.TracerProvider)
 
 	server := &http.Server{
 		Addr:         hostPort,

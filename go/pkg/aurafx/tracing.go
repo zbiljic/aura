@@ -3,30 +3,34 @@ package aurafx
 import (
 	"context"
 	"fmt"
-	"io"
 
-	"github.com/opentracing/opentracing-go"
+	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 
-	"github.com/zbiljic/aura/go/pkg/tracing"
+	otelaura "github.com/zbiljic/aura/go/pkg/otel"
 )
 
 var tracingfx = fx.Options(
 	fx.Provide(ProvideTracer),
+	fx.Provide(ProvideTracerProvider),
 	fx.Invoke(NewTracerCloser),
 )
 
 func ProvideTracer(
 	log *zap.SugaredLogger,
-	tracingConfig *tracing.Config,
-) (opentracing.Tracer, error) {
-	tracer, err := tracing.New(log, tracingConfig)
+	tracingConfig *otelaura.Config,
+) (*otelaura.Tracer, error) {
+	tracer, err := otelaura.New(log, tracingConfig)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create tracer: %v", err)
 	}
 
-	return tracer.Tracer(), nil
+	return tracer, nil
+}
+
+func ProvideTracerProvider(tracer *otelaura.Tracer) trace.TracerProvider {
+	return tracer.TracerProvider()
 }
 
 type TracingParams struct {
@@ -35,17 +39,15 @@ type TracingParams struct {
 	Lifecycle fx.Lifecycle
 
 	Log    *zap.SugaredLogger
-	Tracer opentracing.Tracer
+	Tracer *otelaura.Tracer
 }
 
 func NewTracerCloser(p TracingParams) error {
 	p.Lifecycle.Append(fx.Hook{
 		OnStop: func(ctx context.Context) error {
-			p.Log.Infof("closing tracing")
+			p.Log.Infof("stopping tracing")
 
-			if tracer, ok := p.Tracer.(io.Closer); ok {
-				tracer.Close()
-			}
+			p.Tracer.Shutdown(ctx)
 
 			return nil
 		},
