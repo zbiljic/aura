@@ -629,8 +629,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_oklog_ulid_v2",
         importpath = "github.com/oklog/ulid/v2",
-        sum = "h1:r4fFzBm+bv0wNKNh5eXTwU7i85y5x+uwkxCUTNVQqLc=",
-        version = "v2.0.2",
+        sum = "h1:+9lhoxAP56we25tyYETBBY1YLA2SaoLvUFgrP2miPJU=",
+        version = "v2.1.0",
     )
     go_repository(
         name = "com_github_onsi_ginkgo",
