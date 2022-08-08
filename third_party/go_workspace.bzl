@@ -1001,8 +1001,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_google_genproto",
         importpath = "google.golang.org/genproto",
-        sum = "h1:e0TwkXOdbnH/1x5rc5MZ/VYyiZ4v+RdVfrGMqEwT68I=",
-        version = "v0.0.0-20220519153652-3a47de7e79bd",
+        sum = "h1:sRT5xdTkj1Kbk30qbYC7VyMj73N5pZYsw6v+Nrzdhno=",
+        version = "v0.0.0-20220805133916-01dd62135a58",
     )
     go_repository(
         name = "org_golang_google_grpc",
