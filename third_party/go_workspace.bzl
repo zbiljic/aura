@@ -209,14 +209,14 @@ def go_dependencies():
     go_repository(
         name = "com_github_go_kit_log",
         importpath = "github.com/go-kit/log",
-        sum = "h1:DGJh0Sm43HbOeYDNnVZFl8BvcYVvjD5bqYJvp0REbwQ=",
-        version = "v0.1.0",
+        sum = "h1:7i2K3eKTos3Vc0enKCfnVcgHh2olr/MyfboYq7cAcFw=",
+        version = "v0.2.0",
     )
     go_repository(
         name = "com_github_go_logfmt_logfmt",
         importpath = "github.com/go-logfmt/logfmt",
-        sum = "h1:TrB8swr/68K7m9CcGut2g3UOihhbcbiMAYiuTXdEih4=",
-        version = "v0.5.0",
+        sum = "h1:otpy5pqBCBZ1ng9RQ0dPu4PN7ba75Y/aA+UpowDyNVA=",
+        version = "v0.5.1",
     )
     go_repository(
         name = "com_github_go_logr_logr",
@@ -689,8 +689,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_prometheus_client_golang",
         importpath = "github.com/prometheus/client_golang",
-        sum = "h1:51L9cDoUHVrXx4zWYlcLQIZ+d+VXHgqnYKkIuq4g/34=",
-        version = "v1.12.2",
+        sum = "h1:b71QUfeo5M8gq2+evJdTPfZhYMAU0uKPkyPJ7TPsloU=",
+        version = "v1.13.0",
     )
     go_repository(
         name = "com_github_prometheus_client_model",
@@ -701,14 +701,14 @@ def go_dependencies():
     go_repository(
         name = "com_github_prometheus_common",
         importpath = "github.com/prometheus/common",
-        sum = "h1:hWIdL3N2HoUx3B8j3YN9mWor0qhY/NlEKZEaXxuIRh4=",
-        version = "v0.32.1",
+        sum = "h1:ccBbHCgIiT9uSoFY0vX8H3zsNR5eLt17/RQLUvn8pXE=",
+        version = "v0.37.0",
     )
     go_repository(
         name = "com_github_prometheus_procfs",
         importpath = "github.com/prometheus/procfs",
-        sum = "h1:4jVXhlkAyzOScmCkXBTOLRLTz8EeU+eyjrwB/EPq0VU=",
-        version = "v0.7.3",
+        sum = "h1:ODq8ZFEaYeCaZOJlZZdJA2AbQR98dSHSM1KW/You5mo=",
+        version = "v0.8.0",
     )
     go_repository(
         name = "com_github_rabbitmq_amqp091_go",
@@ -1061,8 +1061,8 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_net",
         importpath = "golang.org/x/net",
-        sum = "h1:O7DYs+zxREGLKzKoMQrtrEacpb0ZVXA5rIwylE2Xchk=",
-        version = "v0.0.0-20220127200216-cd36cc0744dd",
+        sum = "h1:oA4XRj0qtSt8Yo1Zms0CUlsT3KG69V2UGQWPBxujDmc=",
+        version = "v0.0.0-20220225172249-27dd8689420f",
     )
     go_repository(
         name = "org_golang_x_oauth2",
@@ -1073,14 +1073,14 @@ def go_dependencies():
     go_repository(
         name = "org_golang_x_sync",
         importpath = "golang.org/x/sync",
-        sum = "h1:5KslGYwFpkhGh+Q16bwMP3cOontH8FOep7tGV86Y7SQ=",
-        version = "v0.0.0-20210220032951-036812b2e83c",
+        sum = "h1:Ax0t5p6N38Ga0dThY21weqDEyz2oklo4IvDkpigvkD8=",
+        version = "v0.0.0-20220601150217-0de741cfad7f",
     )
     go_repository(
         name = "org_golang_x_sys",
         importpath = "golang.org/x/sys",
-        sum = "h1:XfKQ4OlFl8okEOr5UvAqFRVj8pY/4yfcXrddB8qAbU0=",
-        version = "v0.0.0-20220114195835-da31bd327af9",
+        sum = "h1:dGzPydgVsqGcTRVwiLJ1jVbufYwmzD3LfVPLKsKg+0k=",
+        version = "v0.0.0-20220520151302-bc2c85ada10a",
     )
     go_repository(
         name = "org_golang_x_term",
