@@ -269,8 +269,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_goccy_go_json",
         importpath = "github.com/goccy/go-json",
-        sum = "h1:IcB+Aqpx/iMHu5Yooh7jEzJk1JZ7Pjtmys2ukPr7EeM=",
-        version = "v0.9.7",
+        sum = "h1:hCeNmprSNLB8B8vQKWl6DpuH0t60oEs+TAk9a7CScKc=",
+        version = "v0.9.10",
     )
     go_repository(
         name = "com_github_gogo_protobuf",
@@ -575,8 +575,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_lestrrat_go_httprc",
         importpath = "github.com/lestrrat-go/httprc",
-        sum = "h1:Cnc4NxIySph38pQPzKbjg5OkKsGR/Cf5xcWt5OlSUDI=",
-        version = "v1.0.1",
+        sum = "h1:bAZymwoZQb+Oq8MEbyipag7iSq6YIga8Wj6GOiJGdI8=",
+        version = "v1.0.4",
     )
     go_repository(
         name = "com_github_lestrrat_go_iter",
@@ -587,8 +587,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_lestrrat_go_jwx_v2",
         importpath = "github.com/lestrrat-go/jwx/v2",
-        sum = "h1:BFhFnElL3HVa/e1sXTogmKbMlY2HgfEP1fozVc6/eYA=",
-        version = "v2.0.1",
+        sum = "h1:Mgdn8stExQXkahWoWX0qJGxkapvJyovbl6UqYSQoHss=",
+        version = "v2.0.4",
     )
     go_repository(
         name = "com_github_lestrrat_go_option",
