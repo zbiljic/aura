@@ -7,6 +7,9 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/jaeger"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/exporters/zipkin"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -58,6 +61,71 @@ func (t *Tracer) setup() error {
 	}
 
 	switch strings.ToLower(t.Config.Provider) {
+	case "otlp":
+		var (
+			optsGRPC []otlptracegrpc.Option
+			optsHTTP []otlptracehttp.Option
+
+			client otlptrace.Client
+		)
+
+		if t.Config.OTLP.Endpoint != "" {
+			optsGRPC = append(optsGRPC, otlptracegrpc.WithEndpoint(t.Config.OTLP.Endpoint))
+			optsHTTP = append(optsHTTP, otlptracehttp.WithEndpoint(t.Config.OTLP.Endpoint))
+		}
+
+		if t.Config.OTLP.Insecure {
+			optsGRPC = append(optsGRPC, otlptracegrpc.WithInsecure())
+			optsHTTP = append(optsHTTP, otlptracehttp.WithInsecure())
+		}
+
+		if len(t.Config.OTLP.Headers) > 0 {
+			optsGRPC = append(optsGRPC, otlptracegrpc.WithHeaders(t.Config.OTLP.Headers))
+			optsHTTP = append(optsHTTP, otlptracehttp.WithHeaders(t.Config.OTLP.Headers))
+		}
+
+		if t.Config.OTLP.Compression != "" {
+			optsGRPC = append(optsGRPC, otlptracegrpc.WithCompressor(t.Config.OTLP.Compression))
+			if t.Config.OTLP.Compression == "gzip" {
+				optsHTTP = append(optsHTTP, otlptracehttp.WithCompression(otlptracehttp.GzipCompression))
+			}
+		}
+
+		if t.Config.OTLP.Timeout > 0 {
+			optsGRPC = append(optsGRPC, otlptracegrpc.WithTimeout(t.Config.OTLP.Timeout))
+			optsHTTP = append(optsHTTP, otlptracehttp.WithTimeout(t.Config.OTLP.Timeout))
+		}
+
+		switch t.Config.OTLP.Protocol {
+		case "grpc":
+			client = otlptracegrpc.NewClient(optsGRPC...)
+		case "http/protobuf":
+			client = otlptracehttp.NewClient(optsHTTP...)
+		case "http/json":
+			return fmt.Errorf("unsupported protocol: %s", t.Config.OTLP.Protocol)
+		default:
+			return fmt.Errorf("unknown protocol: %s", t.Config.OTLP.Protocol)
+		}
+
+		// Create the OTLP exporter
+		ctx := context.Background()
+		exporter, err := otlptrace.New(ctx, client)
+		if err != nil {
+			return fmt.Errorf("failed to create OTLP trace exporter: %w", err)
+		}
+
+		t.tracerProvider = sdktrace.NewTracerProvider(
+			spanProcessorOptionFn(t.Config.Sync, exporter),
+			sdktrace.WithResource(resources),
+			sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		)
+
+		t.shutdownFn = exporter.Shutdown
+
+		otel.SetTracerProvider(t.tracerProvider)
+
+		t.log.Infof("OTLP tracer configured")
+
 	case "jaeger":
 		var (
 			options []jaeger.AgentEndpointOption
