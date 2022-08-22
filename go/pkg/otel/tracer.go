@@ -54,12 +54,7 @@ func (t *Tracer) setup() error {
 		return fmt.Errorf("could not set resources: %w", err)
 	}
 
-	spanProcessorOptionFn := func(sync bool, exporter sdktrace.SpanExporter) sdktrace.TracerProviderOption {
-		if sync {
-			return sdktrace.WithSyncer(exporter)
-		}
-		return sdktrace.WithBatcher(exporter)
-	}
+	var exporter sdktrace.SpanExporter
 
 	switch strings.ToLower(t.Config.Provider) {
 	case "stdout":
@@ -73,20 +68,10 @@ func (t *Tracer) setup() error {
 			options = append(options, stdouttrace.WithoutTimestamps())
 		}
 
-		exporter, err := stdouttrace.New(options...)
+		exporter, err = stdouttrace.New(options...)
 		if err != nil {
 			return fmt.Errorf("failed to create STDOUT trace exporter: %w", err)
 		}
-
-		t.tracerProvider = sdktrace.NewTracerProvider(
-			spanProcessorOptionFn(t.Config.Sync, exporter),
-			sdktrace.WithResource(resources),
-			sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		)
-
-		t.shutdownFn = exporter.Shutdown
-
-		otel.SetTracerProvider(t.tracerProvider)
 
 		t.log.Infof("STDOUT trace exporter configured")
 
@@ -138,20 +123,10 @@ func (t *Tracer) setup() error {
 
 		// Create the OTLP exporter
 		ctx := context.Background()
-		exporter, err := otlptrace.New(ctx, client)
+		exporter, err = otlptrace.New(ctx, client)
 		if err != nil {
 			return fmt.Errorf("failed to create OTLP trace exporter: %w", err)
 		}
-
-		t.tracerProvider = sdktrace.NewTracerProvider(
-			spanProcessorOptionFn(t.Config.Sync, exporter),
-			sdktrace.WithResource(resources),
-			sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		)
-
-		t.shutdownFn = exporter.Shutdown
-
-		otel.SetTracerProvider(t.tracerProvider)
 
 		t.log.Infof("OTLP tracer configured")
 
@@ -171,44 +146,24 @@ func (t *Tracer) setup() error {
 		options = append(options, jaeger.WithLogger(zap.NewStdLog(t.log.Desugar())))
 
 		// Create the Jaeger exporter
-		exporter, err := jaeger.New(
+		exporter, err = jaeger.New(
 			jaeger.WithAgentEndpoint(options...),
 		)
 		if err != nil {
 			return err
 		}
 
-		t.tracerProvider = sdktrace.NewTracerProvider(
-			spanProcessorOptionFn(t.Config.Sync, exporter),
-			sdktrace.WithResource(resources),
-			sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		)
-
-		t.shutdownFn = exporter.Shutdown
-
-		otel.SetTracerProvider(t.tracerProvider)
-
 		t.log.Infof("Jaeger tracer configured")
 
 	case "zipkin":
 		// Create the Zipkin exporter
-		exporter, err := zipkin.New(
+		exporter, err = zipkin.New(
 			t.Config.Zipkin.ServerURL,
 			zipkin.WithLogger(zap.NewStdLog(t.log.Desugar())),
 		)
 		if err != nil {
 			return err
 		}
-
-		t.tracerProvider = sdktrace.NewTracerProvider(
-			spanProcessorOptionFn(t.Config.Sync, exporter),
-			sdktrace.WithResource(resources),
-			sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		)
-
-		t.shutdownFn = exporter.Shutdown
-
-		otel.SetTracerProvider(t.tracerProvider)
 
 		t.log.Infof("Zipkin tracer configured")
 
@@ -217,6 +172,23 @@ func (t *Tracer) setup() error {
 	default:
 		return fmt.Errorf("unknown tracer: %s", t.Config.Provider)
 	}
+
+	spanProcessorOptionFn := func(sync bool, exporter sdktrace.SpanExporter) sdktrace.TracerProviderOption {
+		if sync {
+			return sdktrace.WithSyncer(exporter)
+		}
+		return sdktrace.WithBatcher(exporter)
+	}
+
+	t.tracerProvider = sdktrace.NewTracerProvider(
+		spanProcessorOptionFn(t.Config.Sync, exporter),
+		sdktrace.WithResource(resources),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+	)
+
+	t.shutdownFn = exporter.Shutdown
+
+	otel.SetTracerProvider(t.tracerProvider)
 
 	// setup propagators
 	otel.SetTextMapPropagator(
