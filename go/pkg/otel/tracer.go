@@ -10,6 +10,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/exporters/zipkin"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -61,6 +62,34 @@ func (t *Tracer) setup() error {
 	}
 
 	switch strings.ToLower(t.Config.Provider) {
+	case "stdout":
+		var options []stdouttrace.Option
+
+		if t.Config.Stdout.PrettyPrint {
+			options = append(options, stdouttrace.WithPrettyPrint())
+		}
+
+		if !t.Config.Stdout.Timestamps {
+			options = append(options, stdouttrace.WithoutTimestamps())
+		}
+
+		exporter, err := stdouttrace.New(options...)
+		if err != nil {
+			return fmt.Errorf("failed to create STDOUT trace exporter: %w", err)
+		}
+
+		t.tracerProvider = sdktrace.NewTracerProvider(
+			spanProcessorOptionFn(t.Config.Sync, exporter),
+			sdktrace.WithResource(resources),
+			sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		)
+
+		t.shutdownFn = exporter.Shutdown
+
+		otel.SetTracerProvider(t.tracerProvider)
+
+		t.log.Infof("STDOUT trace exporter configured")
+
 	case "otlp":
 		var (
 			optsGRPC []otlptracegrpc.Option

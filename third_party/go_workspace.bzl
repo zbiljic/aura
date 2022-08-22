@@ -1005,6 +1005,12 @@ def go_dependencies():
         version = "v1.9.0",
     )
     go_repository(
+        name = "io_opentelemetry_go_otel_exporters_stdout_stdouttrace",
+        importpath = "go.opentelemetry.io/otel/exporters/stdout/stdouttrace",
+        sum = "h1:0uV0qzHk48i1SF8qRI8odMYiwPOLh9gBhiJFpj8H6JY=",
+        version = "v1.9.0",
+    )
+    go_repository(
         name = "io_opentelemetry_go_otel_exporters_zipkin",
         importpath = "go.opentelemetry.io/otel/exporters/zipkin",
         sum = "h1:06b/nt6xao6th00aue9WU3ZDTTe+InaMXA/vym6pLuA=",

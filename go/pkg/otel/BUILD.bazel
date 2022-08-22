@@ -18,6 +18,7 @@ go_library(
         "@io_opentelemetry_go_otel_exporters_otlp_otlptrace//:go_default_library",
         "@io_opentelemetry_go_otel_exporters_otlp_otlptrace_otlptracegrpc//:go_default_library",
         "@io_opentelemetry_go_otel_exporters_otlp_otlptrace_otlptracehttp//:go_default_library",
+        "@io_opentelemetry_go_otel_exporters_stdout_stdouttrace//:go_default_library",
         "@io_opentelemetry_go_otel_exporters_zipkin//:go_default_library",
         "@io_opentelemetry_go_otel_sdk//resource:go_default_library",
         "@io_opentelemetry_go_otel_sdk//trace:go_default_library",

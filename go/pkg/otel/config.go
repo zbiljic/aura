@@ -15,9 +15,16 @@ type Config struct {
 	// This is not recommended for production use.
 	Sync bool `json:"sync" default:"false"`
 
+	Stdout *StdOutConfig `json:"stdout" validate:"dive"`
 	OTLP   *OTLPConfig   `json:"otlp" validate:"dive"`
 	Jaeger *JaegerConfig `json:"jaeger" validate:"dive"`
 	Zipkin *ZipkinConfig `json:"zipkin" validate:"dive"`
+}
+
+// StdOutConfig encapsulates STDOUT exporter configuration.
+type StdOutConfig struct {
+	PrettyPrint bool `json:"pretty_print" default:"false"`
+	Timestamps  bool `json:"timestamps" default:"true"`
 }
 
 // OTLPConfig encapsulates OTLP exporter configuration.
