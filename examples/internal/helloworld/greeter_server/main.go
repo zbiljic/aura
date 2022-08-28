@@ -12,6 +12,7 @@ import (
 
 	"github.com/zbiljic/aura/go/pkg/aurafx"
 	"github.com/zbiljic/aura/go/pkg/cmd"
+	aconfig "github.com/zbiljic/aura/go/pkg/config"
 	"github.com/zbiljic/aura/go/pkg/logger"
 )
 
@@ -26,7 +27,7 @@ func main() {
 
 func execute() error {
 	var conf config
-	if err := aurafx.LoadConfig("", "helloworld", &conf); err != nil {
+	if err := aconfig.Load("", "helloworld", &conf); err != nil {
 		return fmt.Errorf("failed to load configuration: %v", err)
 	}
 
