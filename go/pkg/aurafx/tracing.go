@@ -19,7 +19,7 @@ var tracingfx = fx.Options(
 
 func ProvideTracer(
 	log *zap.SugaredLogger,
-	tracingConfig *otelaura.Config,
+	tracingConfig otelaura.Config,
 ) (*otelaura.Tracer, error) {
 	tracer, err := otelaura.New(log, tracingConfig)
 	if err != nil {

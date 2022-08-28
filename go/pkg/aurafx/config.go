@@ -20,11 +20,11 @@ var configfx = fx.Provide(
 )
 
 type Config struct {
-	AppName string           `json:"app_name" validate:"required"`
-	Logger  *logger.Config   `json:"logger" validate:"dive"`
-	Tracing *otelaura.Config `json:"tracing" validate:"dive"`
-	Debug   *DebugConfig     `json:"debug" validate:"dive"`
-	Admin   *AdminConfig     `json:"admin" validate:"dive"`
+	AppName string          `json:"app_name" validate:"required"`
+	Logger  logger.Config   `json:"logger" validate:"dive"`
+	Tracing otelaura.Config `json:"tracing" validate:"dive"`
+	Debug   DebugConfig     `json:"debug" validate:"dive"`
+	Admin   AdminConfig     `json:"admin" validate:"dive"`
 }
 
 type namer interface {
@@ -35,11 +35,11 @@ func (config *Config) withName(name string) {
 	config.AppName = name
 }
 
-func ProvideLoggerConfig(config *Config) *logger.Config {
+func ProvideLoggerConfig(config Config) logger.Config {
 	return config.Logger
 }
 
-func ProvideTracingConfig(config *Config) *otelaura.Config {
+func ProvideTracingConfig(config Config) otelaura.Config {
 	tracingConfig := config.Tracing
 	if tracingConfig.ServiceName == "" {
 		tracingConfig.ServiceName = config.AppName
@@ -47,11 +47,11 @@ func ProvideTracingConfig(config *Config) *otelaura.Config {
 	return tracingConfig
 }
 
-func ProvideDebugConfig(config *Config) *DebugConfig {
+func ProvideDebugConfig(config Config) DebugConfig {
 	return config.Debug
 }
 
-func ProvideAdminConfig(config *Config) *AdminConfig {
+func ProvideAdminConfig(config Config) AdminConfig {
 	return config.Admin
 }
 

@@ -40,8 +40,8 @@ type GatewayParams struct {
 
 	Log            *zap.SugaredLogger
 	TracerProvider trace.TracerProvider
-	GRPCConfig     *GRPCConfig
-	GatewayConfig  *GatewayConfig
+	GRPCConfig     GRPCConfig
+	GatewayConfig  GatewayConfig
 
 	Services        []RegisterFn                      `group:"service"`
 	ServeMuxOptions []runtime.ServeMuxOption          `group:"grpc_gateway_serve_mux_options"`

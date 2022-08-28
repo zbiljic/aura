@@ -15,10 +15,10 @@ type Config struct {
 	// This is not recommended for production use.
 	Sync bool `json:"sync" default:"false"`
 
-	Stdout *StdOutConfig `json:"stdout" validate:"dive"`
-	OTLP   *OTLPConfig   `json:"otlp" validate:"dive"`
-	Jaeger *JaegerConfig `json:"jaeger" validate:"dive"`
-	Zipkin *ZipkinConfig `json:"zipkin" validate:"dive"`
+	Stdout StdOutConfig `json:"stdout" validate:"dive"`
+	OTLP   OTLPConfig   `json:"otlp" validate:"dive"`
+	Jaeger JaegerConfig `json:"jaeger" validate:"dive"`
+	Zipkin ZipkinConfig `json:"zipkin" validate:"dive"`
 }
 
 // StdOutConfig encapsulates STDOUT exporter configuration.

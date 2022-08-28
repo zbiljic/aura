@@ -22,14 +22,14 @@ import (
 
 // Tracer encapsulates tracing abilities.
 type Tracer struct {
-	Config *Config
+	Config Config
 
 	log            *zap.SugaredLogger
 	tracerProvider trace.TracerProvider
 	shutdownFn     func(context.Context) error
 }
 
-func New(log *zap.SugaredLogger, c *Config) (*Tracer, error) {
+func New(log *zap.SugaredLogger, c Config) (*Tracer, error) {
 	t := &Tracer{Config: c, log: log}
 
 	if err := t.setup(); err != nil {

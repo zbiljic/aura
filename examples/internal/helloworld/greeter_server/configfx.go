@@ -13,14 +13,14 @@ var configfx = fx.Provide(
 	provideGatewayConfig,
 )
 
-func provideRootConfig(config *config) *aurafx.Config {
-	return &config.Config
+func provideRootConfig(config config) aurafx.Config {
+	return config.Config
 }
 
-func provideGRPCConfig(config *config) *grpc_fx.GRPCConfig {
+func provideGRPCConfig(config config) grpc_fx.GRPCConfig {
 	return config.GRPC
 }
 
-func provideGatewayConfig(config *config) *grpc_fx.GatewayConfig {
+func provideGatewayConfig(config config) grpc_fx.GatewayConfig {
 	return config.Gateway
 }

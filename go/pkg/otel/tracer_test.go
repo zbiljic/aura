@@ -56,11 +56,11 @@ func TestZipkinTracer(t *testing.T) {
 	log, err := zap.NewDevelopment()
 	require.NoError(t, err)
 
-	_, err = otelaura.New(log.Sugar(), &otelaura.Config{
+	_, err = otelaura.New(log.Sugar(), otelaura.Config{
 		ServiceName: "Test",
 		Provider:    "zipkin",
 		Sync:        true,
-		Zipkin: &otelaura.ZipkinConfig{
+		Zipkin: otelaura.ZipkinConfig{
 			ServerURL: ts.URL,
 		},
 	})

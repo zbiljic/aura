@@ -26,7 +26,7 @@ type DebugParams struct {
 	OnErrorCh chan error
 
 	Log         *zap.SugaredLogger
-	DebugConfig *DebugConfig
+	DebugConfig DebugConfig
 }
 
 func NewDebug(p DebugParams) error {

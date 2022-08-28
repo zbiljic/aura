@@ -41,7 +41,7 @@ func getEncoder(logFormat string) zapcore.Encoder {
 	return zapcore.NewConsoleEncoder(encoderConfig)
 }
 
-func New(config *Config) (*zap.SugaredLogger, error) {
+func New(config Config) (*zap.SugaredLogger, error) {
 	cores := []zapcore.Core{}
 
 	level, err := toZapLevel(config.Level)

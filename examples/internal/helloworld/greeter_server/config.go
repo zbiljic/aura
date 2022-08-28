@@ -7,6 +7,6 @@ import (
 
 type config struct {
 	aurafx.Config
-	GRPC    *grpc_fx.GRPCConfig    `json:"grpc" validate:"dive"`
-	Gateway *grpc_fx.GatewayConfig `json:"gateway" validate:"dive"`
+	GRPC    grpc_fx.GRPCConfig    `json:"grpc" validate:"dive"`
+	Gateway grpc_fx.GatewayConfig `json:"gateway" validate:"dive"`
 }

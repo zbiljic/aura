@@ -30,10 +30,10 @@ func execute() error {
 		return fmt.Errorf("failed to load configuration: %v", err)
 	}
 
-	return start(&conf)
+	return start(conf)
 }
 
-func start(conf *config) error {
+func start(conf config) error {
 	log, err := logger.New(conf.Logger)
 	if err != nil {
 		return fmt.Errorf("error creating logger: %w", err)

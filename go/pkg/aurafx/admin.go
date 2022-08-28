@@ -35,7 +35,7 @@ type AdminParams struct {
 	OnErrorCh chan error
 
 	Log         *zap.SugaredLogger
-	AdminConfig *AdminConfig
+	AdminConfig AdminConfig
 
 	AdminHandlers []map[string]http.Handler `group:"admin_api_handler"`
 }

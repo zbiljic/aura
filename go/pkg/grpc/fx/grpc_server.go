@@ -37,7 +37,7 @@ type GRPCServerParams struct {
 	OnErrorCh chan error
 
 	Log        *zap.SugaredLogger
-	GRPCConfig *GRPCConfig
+	GRPCConfig GRPCConfig
 
 	UnaryInterceptors  []grpc.UnaryServerInterceptor  `group:"grpc_unary_server_interceptor"`
 	StreamInterceptors []grpc.StreamServerInterceptor `group:"grpc_stream_server_interceptor"`
