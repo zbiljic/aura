@@ -8,7 +8,7 @@ type Config struct {
 
 	// Set this to the tracing backend you wish to use.
 	// If omitted or empty, tracing will be disabled.
-	Provider string `json:"provider" default:"otlp"`
+	Provider string `json:"provider" default:"jaeger"`
 
 	// Use synchronous span exporter processor.
 	//
