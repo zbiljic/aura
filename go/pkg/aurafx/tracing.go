@@ -8,7 +8,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 
-	otelaura "github.com/zbiljic/aura/go/pkg/otel"
+	"github.com/zbiljic/aura/go/pkg/tracing"
 )
 
 var tracingfx = fx.Options(
@@ -19,9 +19,9 @@ var tracingfx = fx.Options(
 
 func ProvideTracer(
 	log *zap.SugaredLogger,
-	tracingConfig otelaura.Config,
-) (*otelaura.Tracer, error) {
-	tracer, err := otelaura.New(log, tracingConfig)
+	tracingConfig tracing.Config,
+) (*tracing.Tracer, error) {
+	tracer, err := tracing.New(log, tracingConfig)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create tracer: %v", err)
 	}
@@ -29,7 +29,7 @@ func ProvideTracer(
 	return tracer, nil
 }
 
-func ProvideTracerProvider(tracer *otelaura.Tracer) trace.TracerProvider {
+func ProvideTracerProvider(tracer *tracing.Tracer) trace.TracerProvider {
 	return tracer.TracerProvider()
 }
 
@@ -39,7 +39,7 @@ type TracingParams struct {
 	Lifecycle fx.Lifecycle
 
 	Log    *zap.SugaredLogger
-	Tracer *otelaura.Tracer
+	Tracer *tracing.Tracer
 }
 
 func NewTracerCloser(p TracingParams) error {

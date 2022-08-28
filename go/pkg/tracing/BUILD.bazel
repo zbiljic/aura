@@ -1,13 +1,13 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
-    name = "otel",
+    name = "tracing",
     srcs = [
         "config.go",
         "middleware.go",
         "tracer.go",
     ],
-    importpath = "github.com/zbiljic/aura/go/pkg/otel",
+    importpath = "github.com/zbiljic/aura/go/pkg/tracing",
     visibility = ["//visibility:public"],
     deps = [
         "@io_opentelemetry_go_contrib_instrumentation_net_http_otelhttp//:go_default_library",
@@ -28,13 +28,13 @@ go_library(
 )
 
 go_test(
-    name = "otel_test",
+    name = "tracing_test",
     srcs = [
         "middleware_test.go",
         "tracer_test.go",
     ],
     deps = [
-        ":otel",
+        ":tracing",
         "@com_github_stretchr_testify//assert:go_default_library",
         "@com_github_stretchr_testify//require:go_default_library",
         "@io_opentelemetry_go_otel//:go_default_library",

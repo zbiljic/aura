@@ -1,4 +1,4 @@
-package otelaura_test
+package tracing_test
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 
-	otelaura "github.com/zbiljic/aura/go/pkg/otel"
+	"github.com/zbiljic/aura/go/pkg/tracing"
 )
 
 type zipkinSpanRequest struct {
@@ -56,11 +56,11 @@ func TestZipkinTracer(t *testing.T) {
 	log, err := zap.NewDevelopment()
 	require.NoError(t, err)
 
-	_, err = otelaura.New(log.Sugar(), otelaura.Config{
+	_, err = tracing.New(log.Sugar(), tracing.Config{
 		ServiceName: "Test",
 		Provider:    "zipkin",
 		Sync:        true,
-		Zipkin: otelaura.ZipkinConfig{
+		Zipkin: tracing.ZipkinConfig{
 			ServerURL: ts.URL,
 		},
 	})

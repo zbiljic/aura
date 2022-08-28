@@ -1,4 +1,4 @@
-package otelaura
+package tracing
 
 import "time"
 

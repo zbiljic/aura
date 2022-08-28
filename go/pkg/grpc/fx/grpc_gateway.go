@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 
 	grpc_middleware "github.com/zbiljic/aura/go/pkg/grpc/middleware"
-	otelaura "github.com/zbiljic/aura/go/pkg/otel"
+	"github.com/zbiljic/aura/go/pkg/tracing"
 )
 
 type GatewayConfig struct {
@@ -100,7 +100,7 @@ func NewGateway(p GatewayParams) error {
 		handler = p.HTTPMiddleware[i](handler)
 	}
 
-	handler = otelaura.NewTracedHttpHandler(handler, "HTTP-gRPC", p.TracerProvider)
+	handler = tracing.NewTracedHttpHandler(handler, "HTTP-gRPC", p.TracerProvider)
 
 	server := &http.Server{
 		Addr:         hostPort,

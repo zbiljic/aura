@@ -1,4 +1,4 @@
-package otelaura_test
+package tracing_test
 
 import (
 	"net/http"
@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
 	semconv "go.opentelemetry.io/otel/semconv/v1.10.0"
 
-	otelaura "github.com/zbiljic/aura/go/pkg/otel"
+	"github.com/zbiljic/aura/go/pkg/tracing"
 )
 
 func TestTracedHttpHandler(t *testing.T) {
@@ -57,7 +57,7 @@ func TestTracedHttpHandler(t *testing.T) {
 				w.WriteHeader(test.httpStatus)
 			})
 
-			ts := httptest.NewServer(otelaura.NewTracedHttpHandler(mux, "test", provider))
+			ts := httptest.NewServer(tracing.NewTracedHttpHandler(mux, "test", provider))
 			defer ts.Close()
 
 			_, err := http.Get(ts.URL)
