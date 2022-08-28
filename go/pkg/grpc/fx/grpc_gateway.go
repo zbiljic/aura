@@ -21,9 +21,9 @@ import (
 type GatewayConfig struct {
 	Enabled      bool          `json:"enabled" default:"true"`
 	Addr         string        `json:"addr" default:":8080"`
-	ReadTimeout  time.Duration `json:"read_timeout" default:"30s" split_words:"true"`
-	WriteTimeout time.Duration `json:"write_timeout" default:"30s" split_words:"true"`
-	IdleTimeout  time.Duration `json:"idle_timeout" default:"120s" split_words:"true"`
+	ReadTimeout  time.Duration `json:"read_timeout" default:"30s"`
+	WriteTimeout time.Duration `json:"write_timeout" default:"30s"`
+	IdleTimeout  time.Duration `json:"idle_timeout" default:"120s"`
 }
 
 type GatewayInputResult struct {

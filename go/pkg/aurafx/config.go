@@ -15,7 +15,7 @@ var configfx = fx.Provide(
 )
 
 type Config struct {
-	AppName string          `json:"app_name" validate:"required"`
+	AppName string          `json:"app_name" validate:"required" alias:"appName"`
 	Logger  logger.Config   `json:"logger" validate:"dive"`
 	Tracing otelaura.Config `json:"tracing" validate:"dive"`
 	Debug   DebugConfig     `json:"debug" validate:"dive"`

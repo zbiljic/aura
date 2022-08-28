@@ -16,8 +16,8 @@ const (
 
 // Config stores the config for the logger.
 type Config struct {
-	Level  string `json:"level" envconfig:"LOG_LEVEL" default:"info"`
-	Format string `json:"format" envconfig:"LOG_FORMAT" default:"json"`
+	Level  string `json:"level" default:"info" env:"LOG_LEVEL"`
+	Format string `json:"format" default:"json" env:"LOG_FORMAT"`
 }
 
 func toZapLevel(level string) (zapcore.Level, error) {
