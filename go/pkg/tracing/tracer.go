@@ -169,6 +169,7 @@ func (t *Tracer) setup() error {
 
 	case "":
 		t.log.Infof("no tracer configured - skipping tracing setup")
+		return nil
 	default:
 		return fmt.Errorf("unknown tracer: %s", t.Config.Provider)
 	}
