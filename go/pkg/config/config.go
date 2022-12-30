@@ -24,7 +24,7 @@ const (
 var envKeyReplacer = strings.NewReplacer(".", "_")
 
 // Load loads configuration into 'config' variable.
-func Load(filename, appName string, config interface{}) error {
+func Load(filename, appName string, config interface{}, opts ...viper.DecoderConfigOption) error {
 	var v = viper.New()
 
 	if appName != "" {
@@ -63,12 +63,15 @@ func Load(filename, appName string, config interface{}) error {
 		return err
 	}
 
-	if err := v.Unmarshal(config,
+	// include default decoder configuration
+	opts = append([]viper.DecoderConfigOption{
 		func(dc *mapstructure.DecoderConfig) {
 			dc.Squash = true
 			dc.TagName = jsonTagName
 		},
-	); err != nil {
+	}, opts...)
+
+	if err := v.Unmarshal(config, opts...); err != nil {
 		return err
 	}
 
