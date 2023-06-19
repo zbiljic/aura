@@ -3,7 +3,7 @@ module github.com/zbiljic/aura
 go 1.17
 
 require (
-	github.com/creasty/defaults v1.6.0
+	github.com/creasty/defaults v1.7.0
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0

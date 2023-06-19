@@ -143,8 +143,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_creasty_defaults",
         importpath = "github.com/creasty/defaults",
-        sum = "h1:ltuE9cfphUtlrBeomuu8PEyISTXnxqkBIoQfXgv7BSc=",
-        version = "v1.6.0",
+        sum = "h1:eNdqZvc5B509z18lD8yc212CAqJNvfT1Jq6L8WowdBA=",
+        version = "v1.7.0",
     )
     go_repository(
         name = "com_github_davecgh_go_spew",
