@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/creasty/defaults v1.7.0
 	github.com/go-playground/validator/v10 v10.14.1
-	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
+	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.14.0
 	github.com/heptiolabs/healthcheck v0.0.0-20211123025425-613501dd5deb
