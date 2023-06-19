@@ -14,7 +14,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/prometheus/client_golang v1.13.0
-	github.com/rs/cors v1.8.2
+	github.com/rs/cors v1.9.0
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
 	github.com/spf13/viper v1.12.0
 	github.com/stretchr/testify v1.8.4
