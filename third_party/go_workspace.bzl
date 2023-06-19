@@ -1721,14 +1721,14 @@ def go_dependencies():
     go_repository(
         name = "io_opentelemetry_go_contrib_instrumentation_google_golang_org_grpc_otelgrpc",
         importpath = "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
-        sum = "h1:5jD3teb4Qh7mx/nfzq4jO2WFFpvXD0vYWFDrdvNWmXk=",
-        version = "v0.40.0",
+        sum = "h1:Ei1FUQ5CbSNkl2o/XAiksXSyQNAeJBX3ivqJpJ254Ak=",
+        version = "v0.41.1",
     )
     go_repository(
         name = "io_opentelemetry_go_contrib_instrumentation_net_http_otelhttp",
         importpath = "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-        sum = "h1:lE9EJyw3/JhrjWH/hEy9FptnalDQgj7vpbgC2KCCCxE=",
-        version = "v0.40.0",
+        sum = "h1:pX+lppB8PArapyhS6nBStyQmkaDUPWdQf0UmEGRCQ54=",
+        version = "v0.41.1",
     )
     go_repository(
         name = "io_opentelemetry_go_otel",
@@ -1781,8 +1781,8 @@ def go_dependencies():
     go_repository(
         name = "io_opentelemetry_go_otel_metric",
         importpath = "go.opentelemetry.io/otel/metric",
-        sum = "h1:pHDQuLQOZwYD+Km0eb657A25NaRzy0a+eLyKfDXedEs=",
-        version = "v0.37.0",
+        sum = "h1:2MM7m6wPw9B8Qv8iHygoAgkbejed59uUR6ezR5T3X2s=",
+        version = "v0.38.1",
     )
     go_repository(
         name = "io_opentelemetry_go_otel_sdk",
