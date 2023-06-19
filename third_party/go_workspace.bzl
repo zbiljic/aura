@@ -575,8 +575,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_joho_godotenv",
         importpath = "github.com/joho/godotenv",
-        sum = "h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=",
-        version = "v1.4.0",
+        sum = "h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=",
+        version = "v1.5.1",
     )
     go_repository(
         name = "com_github_jpillora_backoff",
