@@ -1,7 +1,7 @@
-diff --git BUILD BUILD
+diff --git BUILD.bazel BUILD.bazel
 index 90805c1..42cc314 100644
---- BUILD
-+++ BUILD
+--- BUILD.bazel
++++ BUILD.bazel
 @@ -1,7 +1,7 @@
  load("@bazel_gazelle//:def.bzl", "gazelle")
  load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
