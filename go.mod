@@ -32,7 +32,7 @@ require (
 	go.uber.org/fx v1.20.0
 	go.uber.org/zap v1.24.0
 	google.golang.org/genproto v0.0.0-20220805133916-01dd62135a58
-	google.golang.org/grpc v1.48.0
+	google.golang.org/grpc v1.51.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0
 	google.golang.org/protobuf v1.30.0
 )
