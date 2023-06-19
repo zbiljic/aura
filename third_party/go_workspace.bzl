@@ -1397,14 +1397,14 @@ def go_dependencies():
     go_repository(
         name = "org_uber_go_dig",
         importpath = "go.uber.org/dig",
-        sum = "h1:VmGvIH45/aapXPQkaOrK5u4B5B7jxZB98HM/utx0eME=",
-        version = "v1.14.0",
+        sum = "h1:5Chju+tUvcC+N7N6EV08BJz41UZuO3BmHcN4A287ZLI=",
+        version = "v1.17.0",
     )
     go_repository(
         name = "org_uber_go_fx",
         importpath = "go.uber.org/fx",
-        sum = "h1:S42dZ6Pok8hQ3jxKwo6ZMYcCgHQA/wAS/gnpRa1Pksg=",
-        version = "v1.17.1",
+        sum = "h1:ZMC/pnRvhsthOZh9MZjMq5U8Or3mA9zBSPaLnzs3ihQ=",
+        version = "v1.20.0",
     )
     go_repository(
         name = "org_uber_go_goleak",
